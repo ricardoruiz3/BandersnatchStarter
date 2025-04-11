@@ -104,7 +104,6 @@ Your application will be deployed and available at a URL provided by Render.
    ```
 
 ## Windows-Specific Notes
-- Windows users may need to download the [wheel for fortuna](https://github.com/decagondev/fortuna-bin-win64) dependency and follow its [README](https://github.com/decagondev/fortuna-bin-win64/blob/main/README.md)
 - Gunicorn is not Windows compatible, so don't use the `run.sh` script on Windows
 
 ## Stretch Goals
