@@ -16,7 +16,7 @@ To see what your final output should be, navigate to `/data` on the [deployed si
 
 Access `app/data.py`, where you will add your code for this ticket. 
 
-Stuck? Post in `labs-ds` or open a support ticket in the Hub!
+Stuck? Post in `team-labs-current` or open a support ticket in the Hub!
 
 ## Deliverables
 Submit the following in your course:

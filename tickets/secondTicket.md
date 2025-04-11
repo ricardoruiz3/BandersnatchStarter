@@ -26,7 +26,7 @@ Submit the following in your course:
 - Link to your forked repo with the added code for the landing page
 - Link to a Loom video answering the prompt in the `Submit Your Deliverables` Assignment in your course
 
-Stuck? Post in `labs-ds` or open a support ticket in the Hub!
+Stuck? Post in `team-labs-current` or open a support ticket in the Hub!
 
 ## Guidance
 
