@@ -48,7 +48,28 @@ class Database:
         return result
 
     def dataframe(self) -> DataFrame:
-        pass
+        '''Converts the objects in the database into dicts and returns
+         all the info as a Pandas DataFrame.'''
 
-    def html_table(self) -> str:
-        pass
+        all_docs = list(self.collection.find())
+
+        for doc in all_docs:
+            doc["_id"] = str(doc["_id"])
+
+        result = DataFrame(all_docs)
+
+        return result
+
+    def html_table(self) -> str | None:
+        '''Returns an HTML representation of the DataFrame - or None
+        if the collection is empty.'''
+
+        df = self.dataframe()
+
+        if df.empty:
+            return None
+
+        return df.to_html(index=False,
+                          border=0,
+                          classes='table table-striped',
+                          justify='center')
