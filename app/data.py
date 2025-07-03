@@ -6,16 +6,19 @@ from MonsterLab import Monster
 from pandas import DataFrame
 from pymongo import MongoClient
 
+load_dotenv()
+
 
 class Database:
 
     def __init__(self):
-        load_dotenv()
         mongo_url = getenv("DB_URL")
 
-        self.client = MongoClient(mongo_url)
-        # , tlsCAFile=where()
+        print(f"DEBUG DB_URL: '{mongo_url}'")  # <-- add this line
+        if not mongo_url:
+            raise RuntimeError("DB_URL is missing or empty!")
 
+        self.client = MongoClient(mongo_url, tlsCAFile=where())
         self.db = self.client['labs_database']
         self.collection = self.db['monsters']
 
