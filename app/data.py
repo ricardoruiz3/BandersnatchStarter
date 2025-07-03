@@ -9,8 +9,31 @@ from pymongo import MongoClient
 
 class Database:
 
+    def __init__(self):
+        load_dotenv()
+        mongo_url = getenv("DB_URL")
+
+        self.client = MongoClient(mongo_url, tlsCAFile=where())
+
+        self.db = self.client['labs_database']
+        self.collection = self.db['monsters']
+
     def seed(self, amount):
-        pass
+        '''This function will generate a list of monsters according to the
+        amount # that is ordered when the method is executed. That list will
+        then be inserted into MongoDB.'''
+
+        monster_list = []
+
+        for _ in range(amount):
+            monster = Monster()
+            monster_dict = monster.to_dict()
+            monster_list.append(monster_dict)
+
+            self.collection.insert_many(monster_list)
+
+            # result = self.collection.insert_many(monster_list)
+            # return result.inserted_ids
 
     def reset(self):
         pass
@@ -23,3 +46,8 @@ class Database:
 
     def html_table(self) -> str:
         pass
+
+
+client = MongoClient("mongodb://localhost:27017/")
+db = client["nombre_base"]
+collection = db["nombre_coleccion"]
