@@ -19,9 +19,9 @@ class Database:
         self.collection = self.db['monsters']
 
     def seed(self, amount):
-        '''This function will generate a list of monsters according to the
-        amount # that is ordered when the method is executed. That list will
-        then be inserted into MongoDB.'''
+        '''Generates a list of monsters according to the amount
+        ordered when the method is executed. That list will be
+        inserted into MongoDB. Returns the inserted ids.'''
 
         monster_list = []
 
@@ -34,7 +34,11 @@ class Database:
         return result.inserted_ids
 
     def reset(self):
-        result 
+        '''Deletes all the documents from the Monsters collections and
+        returns the count of deleted docs.'''
+
+        result = self.collection.delete_many({})
+        return result.deleted_count
 
     def count(self) -> int:
         pass
@@ -44,8 +48,3 @@ class Database:
 
     def html_table(self) -> str:
         pass
-
-
-client = MongoClient("mongodb://localhost:27017/")
-db = client["nombre_base"]
-collection = db["nombre_coleccion"]
