@@ -13,7 +13,8 @@ class Database:
         load_dotenv()
         mongo_url = getenv("DB_URL")
 
-        self.client = MongoClient(mongo_url, tlsCAFile=where())
+        self.client = MongoClient(mongo_url)
+        # , tlsCAFile=where()
 
         self.db = self.client['labs_database']
         self.collection = self.db['monsters']
