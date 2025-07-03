@@ -34,14 +34,18 @@ class Database:
         return result.inserted_ids
 
     def reset(self):
-        '''Deletes all the documents from the Monsters collections and
+        '''Deletes all the documents from the Monsters collection and
         returns the count of deleted docs.'''
 
         result = self.collection.delete_many({})
         return result.deleted_count
 
     def count(self) -> int:
-        pass
+        '''Counts all the documents in the Monsters collection
+        and returns an integer with that count.'''
+
+        result = self.collection.count_documents({})
+        return result
 
     def dataframe(self) -> DataFrame:
         pass
