@@ -30,13 +30,11 @@ class Database:
             monster_dict = monster.to_dict()
             monster_list.append(monster_dict)
 
-            self.collection.insert_many(monster_list)
-
-            # result = self.collection.insert_many(monster_list)
-            # return result.inserted_ids
+        result = self.collection.insert_many(monster_list)
+        return result.inserted_ids
 
     def reset(self):
-        pass
+        result 
 
     def count(self) -> int:
         pass

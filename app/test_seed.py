@@ -1,4 +1,4 @@
-from data import Database 
+from data import Database
 
 if __name__ == "__main__":
     db = Database()
