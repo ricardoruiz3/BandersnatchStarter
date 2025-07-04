@@ -25,9 +25,17 @@ def chart(df: DataFrame, x: str, y: str, target: str) -> Chart:
     ).properties(
         width=600,
         height=400,
-        background='white',
+        background='#121212',
         padding=5,
         title=f"{y} vs {x} colored by {target}"
+    ).configure_axis(
+        labelColor='white',
+        titleColor='white'
+    ).configure_legend(
+        labelColor='white',
+        titleColor='white'
+    ).configure_title(
+        color='white'
     )
 
     return chart
