@@ -66,24 +66,37 @@ def view():
 def model():
     if SPRINT < 3:
         return render_template("model.html")
+
     db = Database()
-    options = ["Level", "Health", "Energy", "Sanity", "Rarity"]
+    df = db.dataframe()
+
+    features = ["Level", "Health", "Energy", "Sanity"]
+    # target = 'Rarity'
+
     filepath = os.path.join("app", "model.joblib")
+
     if not os.path.exists(filepath):
         df = db.dataframe()
-        machine = Machine(df[options])
+        machine = Machine(df)
         machine.save(filepath)
     else:
         machine = Machine.open(filepath)
+
     stats = [round(random.uniform(1, 250), 2) for _ in range(3)]
+
     level = request.values.get("level", type=int) or random.randint(1, 20)
     health = request.values.get("health", type=float) or stats.pop()
     energy = request.values.get("energy", type=float) or stats.pop()
     sanity = request.values.get("sanity", type=float) or stats.pop()
-    prediction, confidence = machine(DataFrame(
-        [dict(zip(options, (level, health, energy, sanity)))]
-    ))
+
+    input_df = DataFrame(
+        [dict(zip(features, (level, health, energy, sanity)))]
+                )
+
+    prediction, confidence = machine(input_df)
+
     info = machine.info()
+
     return render_template(
         "model.html",
         info=info,
