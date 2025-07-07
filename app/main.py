@@ -104,8 +104,8 @@ def model():
         health=health,
         energy=energy,
         sanity=sanity,
-        prediction=prediction,
-        confidence=f"{confidence:.2%}",
+        prediction=prediction[0],
+        confidence=f"{confidence[0]:.2%}",
     )
 
 
